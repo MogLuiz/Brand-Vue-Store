@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import ProductCard from '@/components/ProductCard'
+import ProductCard from '../components/ProductCart/index.vue'
 export default {
   components: { ProductCard },
   data() {
