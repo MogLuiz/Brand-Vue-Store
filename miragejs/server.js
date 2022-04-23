@@ -1,6 +1,5 @@
 import { Server } from 'miragejs';
 import factories from './factories';
-import fixtures from './fixtures';
 import routes from './routes';
 import models from './models';
 import seeds from './seeds';
