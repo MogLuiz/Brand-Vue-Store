@@ -14,10 +14,6 @@ const config = (environment) => {
     seeds,
   };
 
-  if (Object.keys(fixtures).length) {
-    config.fixtures = fixtures;
-  }
-
   return config;
 };
 
