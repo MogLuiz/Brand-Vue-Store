@@ -11,4 +11,10 @@ describe('ProductList - integration', () => {
 
         expect(wrapper.vm).toBeDefined()
     })
+
+    it('should mount the Search component as a child', () => {
+        const wrapper = mount(ProductList)
+
+        expect(wrapper.findComponent(Search)).toBeDefined()
+    })
 })
