@@ -21,11 +21,15 @@ describe('ProductCart - Unit', () => {
     it('should mount the component', () => {
         const wrapper = mount(ProductCart, {
             propsData: {
-                product: server.create('product'),
+                product: server.create('product', {
+                    title: 'Relógio bonito',
+                    price: '25,90',
+                }),
             },
         })
 
-        console.log(wrapper.html())
         expect(wrapper.vm).toBeDefined()
+        expect(wrapper.text()).toContain('Relógio bonito')
+        expect(wrapper.text()).toContain('$25,90')
     })
 })
