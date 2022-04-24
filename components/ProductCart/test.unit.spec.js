@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils'
 
 // Components
-import ProductCart from '../ProductCart'
+import ProductCart from '.'
 
 // Services
 import { makeServer } from '@/miragejs/server'

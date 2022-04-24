@@ -19,8 +19,10 @@
 </template>
 
 <script>
+// Components
 import ProductCard from '../components/ProductCart/index.vue'
 import Search from '../components/Search/index.vue'
+
 export default {
     components: { ProductCard, Search },
     data() {

@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils'
 
 // Components
-import Search from '../Search'
+import Search from '.'
 
 describe('Search - unit', () => {
     it('should mount the component', () => {
