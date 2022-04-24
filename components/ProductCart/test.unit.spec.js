@@ -43,4 +43,13 @@ describe('ProductCart - Unit', () => {
         expect(wrapper.text()).toContain('Relógio bonito')
         expect(wrapper.text()).toContain('$25,90')
     })
+
+    it('should emit the event addToCart with product object when button gets clicked', async () => {
+        const wrapper = mountProductCart()
+
+        await wrapper.find('button').trigger('click')
+
+        expect(wrapper.emitted().addToCart).toBeTruthy()
+        expect(wrapper.emitted().addToCart.length).toBe(1)
+    })
 })
