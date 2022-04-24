@@ -25,6 +25,7 @@ describe('ProductCart - Unit', () => {
             },
         })
 
+        console.log(wrapper.html())
         expect(wrapper.vm).toBeDefined()
     })
 })
