@@ -20,8 +20,7 @@
 
 <script>
 // Components
-import ProductCard from '../components/ProductCart/index.vue'
-import Search from '../components/Search/index.vue'
+import { ProductCard, Search } from '../components'
 
 export default {
     components: { ProductCard, Search },
