@@ -21,7 +21,7 @@
   resolved "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.17.7.tgz"
   integrity sha512-p8pdE6j0a29TNGebNm7NzYZWB3xVZJBZ7XGs42uAKzQo8VQ3F0By/cQCtUEABwIqw5zo6WA4NbmxsfzADzMKnQ==
 
-"@babel/core@^7.1.0", "@babel/core@^7.12.16", "@babel/core@^7.12.3", "@babel/core@^7.14.0", "@babel/core@^7.7.2", "@babel/core@^7.8.0":
+"@babel/core@^7.1.0", "@babel/core@^7.12.16", "@babel/core@^7.12.3", "@babel/core@^7.14.0", "@babel/core@^7.16.7", "@babel/core@^7.7.2", "@babel/core@^7.8.0":
   version "7.17.9"
   resolved "https://registry.npmjs.org/@babel/core/-/core-7.17.9.tgz"
   integrity sha512-5ug+SfZCpDAkVp9SFIZAzlW18rlzsOcJGaetCjkySnrXXDUw9AR8cDUm1iByTmdWM6yxX6/zycaV76w3YTF2gw==
@@ -1917,7 +1917,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/utils@5.19.0", "@typescript-eslint/utils@^5.10.0":
+"@typescript-eslint/utils@5.19.0":
   version "5.19.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-5.19.0.tgz"
   integrity sha512-ZuEckdupXpXamKvFz/Ql8YnePh2ZWcwz7APICzJL985Rp5C2AYcHO62oJzIqNhAMtMK6XvrlBTZeNG8n7gS3lQ==
@@ -2563,6 +2563,11 @@ babel-core@7.0.0-bridge.0:
   resolved "https://registry.npmjs.org/babel-core/-/babel-core-7.0.0-bridge.0.tgz"
   integrity sha512-poPX9mZH/5CSanm50Q+1toVci6pv5KSRv/5TWCwtzQS5XEwn40BcCrgIeMFWP9CKKIniKXNxoIOnOq4VVlGXhg==
 
+babel-helper-vue-jsx-merge-props@^2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
+  integrity sha512-gsLiKK7Qrb7zYJNgiXKpXblxbV5ffSwR0f5whkPAaBAR4fhi6bwRZxX9wBlIc5M/v8CCkXUbXZL4N/nSE97cqg==
+
 babel-jest@^27.4.4, babel-jest@^27.5.1:
   version "27.5.1"
   resolved "https://registry.npmjs.org/babel-jest/-/babel-jest-27.5.1.tgz"
@@ -2622,6 +2627,20 @@ babel-plugin-jest-hoist@^27.5.1:
     "@types/babel__core" "^7.0.0"
     "@types/babel__traverse" "^7.0.6"
 
+babel-plugin-jsx-event-modifiers@^2.0.2:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-event-modifiers/-/babel-plugin-jsx-event-modifiers-2.0.5.tgz#93e6ebb5d7553bb08f9fedbf7a0bee3af09a0472"
+  integrity sha512-tWGnCk0whZ+nZcj9tYLw4+y08tPJXqaEjIxRJZS6DkUUae72Kz4BsoGpxt/Kow7mmgQJpvFCw8IPLSNh5rkZCg==
+
+babel-plugin-jsx-v-model@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-v-model/-/babel-plugin-jsx-v-model-2.0.3.tgz#c396416b99cb1af782087315ae1d3e62e070f47d"
+  integrity sha512-SIx3Y3XxwGEz56Q1atwr5GaZsxJ2IRYmn5dl38LFkaTAvjnbNQxsZHO+ylJPsd+Hmv+ixJBYYFEekPBTHwiGfQ==
+  dependencies:
+    babel-plugin-syntax-jsx "^6.18.0"
+    html-tags "^2.0.0"
+    svg-tags "^1.0.0"
+
 babel-plugin-polyfill-corejs2@^0.3.0:
   version "0.3.1"
   resolved "https://registry.npmjs.org/babel-plugin-polyfill-corejs2/-/babel-plugin-polyfill-corejs2-0.3.1.tgz"
@@ -2646,6 +2665,11 @@ babel-plugin-polyfill-regenerator@^0.3.0:
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.3.1"
 
+babel-plugin-syntax-jsx@^6.18.0:
+  version "6.18.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
+  integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
+
 babel-plugin-transform-es2015-modules-commonjs@^6.26.0:
   version "6.26.2"
   resolved "https://registry.npmjs.org/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.26.2.tgz"
@@ -2663,6 +2687,13 @@ babel-plugin-transform-strict-mode@^6.24.1:
   dependencies:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
+
+babel-plugin-transform-vue-jsx@^3.5.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-vue-jsx/-/babel-plugin-transform-vue-jsx-3.7.0.tgz#d40492e6692a36b594f7e9a1928f43e969740960"
+  integrity sha512-W39X07/n3oJMQd8tALBO+440NraGSF//Lo1ydd/9Nme3+QiRGFBb1Q39T9iixh0jZPPbfv3so18tNoIgLatymw==
+  dependencies:
+    esutils "^2.0.2"
 
 babel-preset-current-node-syntax@^1.0.0:
   version "1.0.1"
@@ -2689,6 +2720,17 @@ babel-preset-jest@^27.5.1:
   dependencies:
     babel-plugin-jest-hoist "^27.5.1"
     babel-preset-current-node-syntax "^1.0.0"
+
+babel-preset-vue@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/babel-preset-vue/-/babel-preset-vue-2.0.2.tgz#cfadf1bd736125397481b5f8525ced0049a0c71f"
+  integrity sha1-z63xvXNhJTl0gbX4UlztAEmgxx8=
+  dependencies:
+    babel-helper-vue-jsx-merge-props "^2.0.2"
+    babel-plugin-jsx-event-modifiers "^2.0.2"
+    babel-plugin-jsx-v-model "^2.0.1"
+    babel-plugin-syntax-jsx "^6.18.0"
+    babel-plugin-transform-vue-jsx "^3.5.0"
 
 babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
@@ -4505,9 +4547,9 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-prettier@^8.3.0:
+eslint-config-prettier@^8.0.0:
   version "8.5.0"
-  resolved "https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
   integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
 eslint-config-standard@^16.0.3:
@@ -4565,13 +4607,6 @@ eslint-plugin-jest@^25.3.0:
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.0.0"
 
-eslint-plugin-jest@^26.1.4:
-  version "26.1.4"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-26.1.4.tgz#8e3410093ff4439d0c3a371add5bf9e05623a57a"
-  integrity sha512-wgqxujmqc2qpvZqMFWCh6Cniqc8lWpapvXt9j/19DmBDqeDaYhJrSRezYR1SKyemvjx+9e9kny/dgRahraHImA==
-  dependencies:
-    "@typescript-eslint/utils" "^5.10.0"
-
 eslint-plugin-node@^11.1.0:
   version "11.1.0"
   resolved "https://registry.npmjs.org/eslint-plugin-node/-/eslint-plugin-node-11.1.0.tgz"
@@ -4626,7 +4661,7 @@ eslint-plugin-unicorn@^39.0.0:
     semver "^7.3.5"
     strip-indent "^3.0.0"
 
-eslint-plugin-vue@^8.1.1, eslint-plugin-vue@^8.2.0, eslint-plugin-vue@^8.5.0:
+eslint-plugin-vue@^8.1.1, eslint-plugin-vue@^8.5.0:
   version "8.6.0"
   resolved "https://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-8.6.0.tgz"
   integrity sha512-abXiF2J18n/7ZPy9foSlJyouKf54IqpKlNvNmzhM93N0zs3QUxZG/oBd3tVPOJTKg7SlhBUtPxugpqzNbgGpQQ==
