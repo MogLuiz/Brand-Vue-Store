@@ -79,4 +79,33 @@ describe('ProductList - integration', () => {
 
         expect(wrapper.text()).toContain('Problemas ao carregar a lista!')
     })
+
+    it('should filter the product list when a search is performed', async () => {
+        const products = [
+            ...server.createList('product', 10),
+            server.create('product', {
+                title: 'Meu relógio pela ordi',
+            }),
+            server.create('product', {
+                title: 'Meu outro relógio malado',
+            }),
+        ]
+
+        axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
+
+        const wrapper = mount(ProductList, {
+            mocks: {
+                $axios: axios,
+            },
+        })
+
+        await Vue.nextTick()
+
+        const search = wrapper.findComponent(Search)
+        search.find('input[type="search"]').setValue('relógio')
+        await search.find('form').trigger('submit')
+
+        const cards = wrapper.findAllComponents(ProductCard)
+        expect(cards).toHaveLength(2)
+    })
 })
