@@ -25,7 +25,7 @@ describe('ProductList - integration', () => {
         server.shutdown()
     })
 
-    const getProducts = async (quantity, overrides = []) => {
+    const getProducts = async (quantity = 10, overrides = []) => {
         let overrideList = []
 
         if (overrides.length > 0) {
@@ -66,7 +66,7 @@ describe('ProductList - integration', () => {
     })
 
     it('should mount the ProductCard component 10 times', async () => {
-        const products = server.createList('product', 10)
+        const products = await getProducts()
 
         axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
 
