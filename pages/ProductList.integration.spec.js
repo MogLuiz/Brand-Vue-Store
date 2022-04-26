@@ -42,6 +42,22 @@ describe('ProductList - integration', () => {
         return products
     }
 
+    const mountProductList = async () => {
+        const products = await getProducts()
+
+        axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
+
+        const wrapper = mount(ProductList, {
+            mocks: {
+                $axios: axios,
+            },
+        })
+
+        await Vue.nextTick()
+
+        return { wrapper, products }
+    }
+
     it('should mount the component', () => {
         const wrapper = mount(ProductList)
 
@@ -66,17 +82,7 @@ describe('ProductList - integration', () => {
     })
 
     it('should mount the ProductCard component 10 times', async () => {
-        const products = await getProducts()
-
-        axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
-
-        const wrapper = mount(ProductList, {
-            mocks: {
-                $axios: axios,
-            },
-        })
-
-        await Vue.nextTick()
+        const { wrapper } = await mountProductList()
 
         const cards = wrapper.findAllComponents(ProductCard)
 
