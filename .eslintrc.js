@@ -23,5 +23,6 @@ module.exports = {
         'vue/multi-word-component-names': 'off',
         'no-undef': 'off',
         'import/order': 'off',
+        'require-await': 'off',
     },
 }

@@ -25,15 +25,18 @@ describe('ProductList - integration', () => {
         server.shutdown()
     })
 
-    const getProducts = () => {
+    const getProducts = async (quantity, overrides = []) => {
+        let overrideList = []
+
+        if (overrides.length > 0) {
+            overrideList = overrides.map((override) =>
+                server.create('product', override)
+            )
+        }
+
         const products = [
-            ...server.createList('product', 10),
-            server.create('product', {
-                title: 'Meu relógio pela ordi',
-            }),
-            server.create('product', {
-                title: 'Meu outro relógio malado',
-            }),
+            ...server.createList('product', quantity),
+            ...overrideList,
         ]
 
         return products
@@ -96,15 +99,14 @@ describe('ProductList - integration', () => {
 
     it('should filter the product list when a search is performed', async () => {
         // Arrange
-        const products = [
-            ...server.createList('product', 10),
-            server.create('product', {
-                title: 'Meu relógio pela ordi',
-            }),
-            server.create('product', {
-                title: 'Meu outro relógio malado',
-            }),
-        ]
+        const products = await getProducts(10, [
+            {
+                title: 'Meu relógio amado',
+            },
+            {
+                title: 'Meu relógio outro relógio malado',
+            },
+        ])
 
         axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
 
@@ -129,12 +131,11 @@ describe('ProductList - integration', () => {
 
     it('should return all product list when a empty search is performed', async () => {
         // Arrange
-        const products = [
-            ...server.createList('product', 10),
-            server.create('product', {
-                title: 'Meu relógio pela ordi',
-            }),
-        ]
+        const products = await getProducts(10, [
+            {
+                title: 'Meu relógio malado',
+            },
+        ])
 
         axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
 
