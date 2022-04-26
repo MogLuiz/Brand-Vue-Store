@@ -19,7 +19,6 @@
 </template>
 
 <script>
-// Components
 import { ProductCard, Search } from '../components'
 
 export default {

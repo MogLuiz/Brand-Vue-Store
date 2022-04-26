@@ -25,6 +25,20 @@ describe('ProductList - integration', () => {
         server.shutdown()
     })
 
+    const getProducts = () => {
+        const products = [
+            ...server.createList('product', 10),
+            server.create('product', {
+                title: 'Meu relógio pela ordi',
+            }),
+            server.create('product', {
+                title: 'Meu outro relógio malado',
+            }),
+        ]
+
+        return products
+    }
+
     it('should mount the component', () => {
         const wrapper = mount(ProductList)
 
