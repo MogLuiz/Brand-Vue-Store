@@ -42,10 +42,18 @@ describe('ProductList - integration', () => {
         return products
     }
 
-    const mountProductList = async () => {
-        const products = await getProducts()
+    const mountProductList = async (
+        quantity = 10,
+        overrides = [],
+        shouldReject = false
+    ) => {
+        const products = await getProducts(quantity, overrides)
 
-        axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
+        if (shouldReject) {
+            axios.get.mockReturnValue(Promise.reject(new Error(' ')))
+        } else {
+            axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
+        }
 
         const wrapper = mount(ProductList, {
             mocks: {
@@ -105,7 +113,7 @@ describe('ProductList - integration', () => {
 
     it('should filter the product list when a search is performed', async () => {
         // Arrange
-        const products = await getProducts(10, [
+        const { wrapper } = await mountProductList(10, [
             {
                 title: 'Meu relógio amado',
             },
@@ -113,16 +121,6 @@ describe('ProductList - integration', () => {
                 title: 'Meu relógio outro relógio malado',
             },
         ])
-
-        axios.get.mockReturnValue(Promise.resolve({ data: { products } }))
-
-        const wrapper = mount(ProductList, {
-            mocks: {
-                $axios: axios,
-            },
-        })
-
-        await Vue.nextTick()
 
         // Act
         const search = wrapper.findComponent(Search)
