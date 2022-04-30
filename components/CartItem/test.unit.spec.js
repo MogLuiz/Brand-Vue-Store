@@ -47,4 +47,10 @@ describe('CartItem', () => {
         expect(content).toContain(title)
         expect(content).toContain(price)
     })
+
+    it('should display quantity 1 when product is first displayed', () => {
+        const { wrapper } = mountCartItem()
+        const quantity = wrapper.find('[data-testid="quantity"]')
+
+        expect(quantity.text()).toContain('1')
 })
