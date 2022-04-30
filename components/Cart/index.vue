@@ -58,14 +58,14 @@ export default {
             type: Boolean,
             default: false,
         },
-    },
-    products: {
-        type: Array,
-        default: () => [],
+        products: {
+            type: Array,
+            default: () => [],
+        },
     },
     computed: {
         hasProducts() {
-            return this?.products?.length > 0
+            return this.products.length > 0
         },
     },
     methods: {
