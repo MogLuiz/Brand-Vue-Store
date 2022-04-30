@@ -24,5 +24,7 @@ module.exports = {
         'no-undef': 'off',
         'import/order': 'off',
         'require-await': 'off',
+        'require-prop-type-constructor': 'off',
+        'require-default-prop': 'off',
     },
 }
