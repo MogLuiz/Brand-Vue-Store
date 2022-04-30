@@ -36,4 +36,15 @@ describe('CartItem', () => {
 
         expect(wrapper.vm).toBeDefined()
     })
+
+    it('should display correctly product info', () => {
+        const {
+            wrapper,
+            product: { title, price },
+        } = mountCartItem()
+        const content = wrapper.text()
+
+        expect(content).toContain(title)
+        expect(content).toContain(price)
+    })
 })
