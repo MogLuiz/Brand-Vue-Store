@@ -122,5 +122,15 @@
 import Cart from '@/components/Cart'
 export default {
     components: { Cart },
+    data() {
+        return {
+            isCartOpen: false,
+        }
+    },
+    methods: {
+        toggleCart() {
+            this.isCartOpen = !this.isCartOpen
+        },
+    },
 }
 </script>
