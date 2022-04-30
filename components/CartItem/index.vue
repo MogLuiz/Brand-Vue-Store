@@ -26,7 +26,9 @@
                             ></path>
                         </svg>
                     </button>
-                    <span class="text-gray-700 mx-2">{{ product.price }}</span>
+                    <span data-testid="quantity" class="text-gray-700 mx-2">{{
+                        quantity
+                    }}</span>
                     <button
                         class="text-gray-500 focus:outline-none focus:text-gray-600"
                     >
@@ -47,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <span class="text-gray-600">20$</span>
+        <span class="text-gray-600">{{ product.price }}</span>
     </div>
 </template>
 
@@ -59,6 +61,11 @@ export default {
             type: Object,
             required: true,
         },
+    },
+    data() {
+        return {
+            quantity: 1,
+        }
     },
 }
 </script>

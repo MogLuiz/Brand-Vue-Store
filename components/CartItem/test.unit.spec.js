@@ -53,4 +53,5 @@ describe('CartItem', () => {
         const quantity = wrapper.find('[data-testid="quantity"]')
 
         expect(quantity.text()).toContain('1')
+    })
 })
