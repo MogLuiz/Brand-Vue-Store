@@ -7,6 +7,19 @@ import CartItem from '.'
 // Services
 import { makeServer } from '@/miragejs/server'
 
+const mountCartItem = () => {
+    const product = server.create('product', {
+        title: 'Lindo relogio',
+        price: '22.33',
+    })
+    const wrapper = mount(CartItem, {
+        propsData: {
+            product,
+        },
+    })
+    return { product, wrapper }
+}
+
 describe('CartItem', () => {
     let server
 
@@ -19,15 +32,7 @@ describe('CartItem', () => {
     })
 
     it('should mount the component', () => {
-        const product = server.create('product', {
-            title: 'Lindo relogio',
-            price: '22.33',
-        })
-        const wrapper = mount(CartItem, {
-            propsData: {
-                product,
-            },
-        })
+        const { wrapper } = mountCartItem()
 
         expect(wrapper.vm).toBeDefined()
     })
