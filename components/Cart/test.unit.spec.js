@@ -65,5 +65,6 @@ describe('Cart', () => {
         })
 
         expect(wrapper.findAllComponents(CartItem)).toHaveLength(2)
+        expect(wrapper.text()).not.toContain('Cart is empty')
     })
 })
