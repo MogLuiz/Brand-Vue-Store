@@ -1,3 +1,4 @@
+/* eslint-disable vue/attribute-hyphenation */
 <template>
     <div class="bg-white">
         <header>
