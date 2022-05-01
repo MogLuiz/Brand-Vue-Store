@@ -54,4 +54,16 @@ describe('CartItem', () => {
 
         expect(quantity.text()).toContain('1')
     })
+
+    it('should increase quantity when + button gets clicked', async () => {
+        const { wrapper } = mountCartItem()
+        const button = wrapper.find('[data-test="+"]')
+
+        await button.trigger('click')
+        expect(quantity.text()).toContain('2')
+        await button.trigger('click')
+        expect(quantity.text()).toContain('3')
+        await button.trigger('click')
+        expect(quantity.text()).toContain('4')
+    })
 })
