@@ -57,4 +57,6 @@ describe('ProductCart - Unit', () => {
 
         expect(cartState.items).toHaveLength(1)
     })
+
+    it.todo('should ensure product is not added to the cart twise')
 })
