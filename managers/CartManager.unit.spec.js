@@ -36,4 +36,11 @@ describe('CartManager', () => {
 
         expect(state.items).toHaveLength(1)
     })
+
+    it('should return true if product is already in the cart', () => {
+        const product = server.create('product')
+        manager.addProduct(product)
+
+        expect(manager.productIsInTheCart(product)).toBe(true)
+    })
 })
