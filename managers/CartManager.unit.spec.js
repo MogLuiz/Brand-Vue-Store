@@ -1,3 +1,4 @@
+// CartManager
 import { CartManager } from '@/managers/CartManager'
 
 describe('CartManager', () => {
