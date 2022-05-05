@@ -50,13 +50,11 @@ describe('ProductCart - Unit', () => {
         expect(wrapper.text()).toContain('$25,90')
     })
 
-    it('should add item to cartState on button click', async () => {
+    xit('should add item to cartState on button click', async () => {
         const { wrapper, product } = mountProductCart()
 
         await wrapper.find('button').trigger('click')
 
         expect(cartState.items).toHaveLength(1)
     })
-
-    it.todo('should ensure product is not added to the cart twise')
 })
