@@ -63,4 +63,18 @@ describe('CartManager', () => {
 
         expect(state.items).toHaveLength(0)
     })
+
+    it('should clear cart', () => {
+        const product = server.create('product')
+        const product2 = server.create('product')
+
+        manager.addProduct(product)
+        manager.addProduct(product2)
+        manager.open()
+
+        const state = manager.clearCart()
+
+        expect(state.items).toHaveLength(0)
+        expect(state.open).toBe(false)
+    })
 })
