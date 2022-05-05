@@ -37,13 +37,6 @@ describe('CartManager', () => {
         expect(state.items).toHaveLength(1)
     })
 
-    it('should return true if product is already in the cart', () => {
-        const product = server.create('product')
-        manager.addProduct(product)
-
-        expect(manager.productIsInTheCart(product)).toBe(true)
-    })
-
     it('should remove product from the cart', () => {
         const product = server.create('product')
         manager.addProduct(product)
@@ -76,5 +69,20 @@ describe('CartManager', () => {
 
         expect(state.items).toHaveLength(0)
         expect(state.open).toBe(false)
+    })
+
+    it('should return true if cart is not empty', () => {
+        const product = server.create('product')
+
+        manager.addProduct(product)
+
+        expect(manager.hasProducts()).toBe(true)
+    })
+
+    it('should return true if product is already in the cart', () => {
+        const product = server.create('product')
+        manager.addProduct(product)
+
+        expect(manager.productIsInTheCart(product)).toBe(true)
     })
 })
