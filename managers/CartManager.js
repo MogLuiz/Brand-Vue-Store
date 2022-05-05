@@ -25,6 +25,10 @@ export class CartManager {
         return this.state
     }
 
+    getState() {
+        return this.state
+    }
+
     productIsInTheCart(product) {
         return !!this.state.items.find(({ id }) => id === product.id)
     }

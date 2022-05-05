@@ -21,6 +21,7 @@ describe('CartManager', () => {
         const product = server.create('product')
 
         manager.open()
+        manager.addProduct(product)
         const state = manager.getState()
 
         expect(state).toEqual({
