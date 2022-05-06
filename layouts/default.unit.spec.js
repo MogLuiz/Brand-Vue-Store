@@ -9,7 +9,7 @@ import Cart from '@/components/Cart'
 import { CartManager } from '@/managers/CartManager'
 
 describe('Default Layout', () => {
-    it('should mount Cart', () => {
+    const mountLayout = () => {
         const wrapper = mount(DefaultLayout, {
             mocks: {
                 $cart: new CartManager(),
@@ -18,6 +18,12 @@ describe('Default Layout', () => {
                 Nuxt: true,
             },
         })
+
+        return { wrapper }
+    }
+
+    it('should mount Cart', () => {
+        const { wrapper } = mountLayout()
 
         expect(wrapper.findComponent(Cart).exists()).toBe(true)
     })
