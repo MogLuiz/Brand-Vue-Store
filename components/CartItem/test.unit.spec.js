@@ -1,5 +1,6 @@
 // Packages
 import { mount } from '@vue/test-utils'
+import { CartManager } from '@/managers/CartManager'
 
 // Components
 import CartItem from '.'
@@ -12,12 +13,18 @@ const mountCartItem = () => {
         title: 'Lindo relogio',
         price: '22.33',
     })
+
+    const cartManager = new CartManager()
+
     const wrapper = mount(CartItem, {
         propsData: {
             product,
         },
+        mocks: {
+            $cart: cartManager,
+        },
     })
-    return { product, wrapper }
+    return { product, wrapper, CartManager }
 }
 
 describe('CartItem', () => {
