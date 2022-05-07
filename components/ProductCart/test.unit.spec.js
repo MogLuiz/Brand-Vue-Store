@@ -59,7 +59,7 @@ describe('ProductCart - Unit', () => {
         expect(wrapper.text()).toContain('$25,90')
     })
 
-    fit('should add item to cartState on button click', async () => {
+    it('should add item to cartState on button click', async () => {
         const { wrapper, cartManager } = mountProductCart()
 
         const openSpy = jest.spyOn(cartManager, 'open')
@@ -69,5 +69,15 @@ describe('ProductCart - Unit', () => {
 
         expect(openSpy).toHaveBeenCalledTimes(1)
         expect(addProductSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('addProduct should been called with correctly product', async () => {
+        const { wrapper, cartManager, product } = mountProductCart()
+
+        const addProductSpy = jest.spyOn(cartManager, 'addProduct')
+
+        await wrapper.find('button').trigger('click')
+
+        expect(addProductSpy).toHaveBeenCalledWith(product)
     })
 })
