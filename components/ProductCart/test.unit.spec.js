@@ -1,6 +1,5 @@
 // Packages
 import { mount } from '@vue/test-utils'
-import { cartState } from '@/state'
 import { CartManager } from '@/managers/CartManager'
 
 // Components
