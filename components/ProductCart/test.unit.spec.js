@@ -59,11 +59,13 @@ describe('ProductCart - Unit', () => {
         expect(wrapper.text()).toContain('$25,90')
     })
 
-    xit('should add item to cartState on button click', async () => {
-        const { wrapper, product } = mountProductCart()
+    fit('should add item to cartState on button click', async () => {
+        const { wrapper, cartManager } = mountProductCart()
+
+        const spy = jest.spyOn(cartManager, 'open')
 
         await wrapper.find('button').trigger('click')
 
-        expect(cartState.items).toHaveLength(1)
+        expect(spy).toHaveBeenCalledTimes(1)
     })
 })
