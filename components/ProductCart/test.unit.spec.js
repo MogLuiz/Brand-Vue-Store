@@ -62,10 +62,12 @@ describe('ProductCart - Unit', () => {
     fit('should add item to cartState on button click', async () => {
         const { wrapper, cartManager } = mountProductCart()
 
-        const spy = jest.spyOn(cartManager, 'open')
+        const openSpy = jest.spyOn(cartManager, 'open')
+        const addProductSpy = jest.spyOn(cartManager, 'addProduct')
 
         await wrapper.find('button').trigger('click')
 
-        expect(spy).toHaveBeenCalledTimes(1)
+        expect(openSpy).toHaveBeenCalledTimes(1)
+        expect(addProductSpy).toHaveBeenCalledTimes(1)
     })
 })
