@@ -1,6 +1,7 @@
 // Packages
 import { mount } from '@vue/test-utils'
 import { cartState } from '@/state'
+import { CartManager } from '@/managers/CartManager'
 
 // Components
 import ProductCart from '.'
@@ -15,15 +16,21 @@ const mountProductCart = () => {
         image: 'https://images.unsplash.com/photo-1495856458515-0637185db551?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
     })
 
+    const cartManager = new CartManager()
+
     const wrapper = mount(ProductCart, {
         propsData: {
             product,
+        },
+        mocks: {
+            $cart: cartManager,
         },
     })
 
     return {
         wrapper,
         product,
+        cartManager,
     }
 }
 
