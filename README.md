@@ -30,6 +30,7 @@ Brand Vue Store
 -   [x] [Cypress](https://docs.cypress.io/guides/overview/why-cypress)
 -   [x] [Jest](https://jestjs.io/pt-BR/docs/getting-started)
 -   [x] [Integration Testing](https://docs.flutter.dev/cookbook/testing/integration/introduction)
+-   [x] [TDD](http://agiledata.org/essays/tdd.html)
 
 
 ## :muscle: Status do Projeto
