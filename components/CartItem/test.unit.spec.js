@@ -24,7 +24,7 @@ const mountCartItem = () => {
             $cart: cartManager,
         },
     })
-    return { product, wrapper, CartManager }
+    return { product, wrapper, cartManager }
 }
 
 describe('CartItem', () => {
@@ -95,7 +95,7 @@ describe('CartItem', () => {
     })
 
     it('should display a button to remove item from cart', () => {
-        const { wrapper, cartManager } = mountCartItem()
+        const { wrapper } = mountCartItem()
 
         const button = wrapper.find('[data-testid="remove-button"]')
 
