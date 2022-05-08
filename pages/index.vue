@@ -6,7 +6,7 @@
             <span
                 data-testid="total-quantity-label"
                 class="mt-3 text-sm text-gray-500"
-                >{{ list.length }} Products</span
+                >{{ quantityLabel }}</span
             >
             <div
                 class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6"
@@ -42,6 +42,13 @@ export default {
                 )
 
             return this.products
+        },
+        quantityLabel() {
+            const {
+                list: { length },
+            } = this
+
+            return length === 1 ? `${length} Product` : `${length} Products`
         },
     },
     async created() {
