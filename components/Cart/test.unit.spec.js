@@ -20,8 +20,8 @@ describe('Cart', () => {
         server.shutdown()
     })
 
-    const mountCart = () => {
-        const products = server.createList('product', 2)
+    const mountCart = (quantity = 2) => {
+        const products = server.createList('product', quantity)
 
         const cartManager = new CartManager()
 
@@ -38,13 +38,13 @@ describe('Cart', () => {
     }
 
     it('should mount the component', () => {
-        const wrapper = mount(Cart)
+        const { wrapper } = mountCart()
 
         expect(wrapper.vm).toBeDefined()
     })
 
     it('should emit close event when button gets clicked', async () => {
-        const wrapper = mount(Cart)
+        const { wrapper } = mountCart()
         const button = wrapper.find('[data-testid="close-button"]')
 
         await button.trigger('click')
@@ -54,23 +54,23 @@ describe('Cart', () => {
     })
 
     it('should hide the cart when no prop isOpen is passed', () => {
-        const wrapper = mount(Cart)
+        const { wrapper } = mountCart()
 
         expect(wrapper.classes()).toContain('hidden')
     })
 
-    it('should display the cart when prop isOpen is passed', () => {
-        const wrapper = mount(Cart, {
-            propsData: {
-                isOpen: true,
-            },
+    it('should display the cart when prop isOpen is passed', async () => {
+        const { wrapper } = mountCart()
+
+        await wrapper.setProps({
+            isOpen: true,
         })
 
         expect(wrapper.classes()).not.toContain('hidden')
     })
 
     it('should display "Cart is empty" when there are no products', () => {
-        const wrapper = mount(Cart)
+        const { wrapper } = mountCart(0)
 
         expect(wrapper.text()).toContain('Cart is empty')
     })
