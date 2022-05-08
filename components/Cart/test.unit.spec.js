@@ -1,4 +1,6 @@
+// Packages
 import { mount } from '@vue/test-utils'
+import { CartManager } from '@/managers/CartManager'
 
 // Components
 import Cart from '.'
@@ -17,6 +19,23 @@ describe('Cart', () => {
     afterEach(() => {
         server.shutdown()
     })
+
+    const mountCart = () => {
+        const products = server.createList('product', 2)
+
+        const cartManager = new CartManager()
+
+        const wrapper = mount(Cart, {
+            propsData: {
+                products,
+            },
+            mocks: {
+                $cart: cartManager,
+            },
+        })
+
+        return { wrapper, cartManager, products }
+    }
 
     it('should mount the component', () => {
         const wrapper = mount(Cart)
