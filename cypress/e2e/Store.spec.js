@@ -27,6 +27,14 @@ context('Store', () => {
             cy.get('[data-testid="product-card"]').should('have.length', 0)
             cy.get('body').contains('0 Products')
         })
+
+        it('should display "1 Product" when no product is returned', () => {
+            server.create('product')
+            cy.visit('http://localhost:3000')
+
+            cy.get('[data-testid="product-card"]').should('have.length', 1)
+            cy.get('body').contains('1 Product')
+        })
     })
 
     context('Store > Search for Products', () => {
