@@ -21,12 +21,25 @@ context('Store', () => {
     })
 
     context('Store > Search for Products', () => {
-        it.only('should type in the search field', () => {
+        it('should type in the search field', () => {
             cy.visit('http://localhost:3000')
 
             cy.get('input[type="search"]')
                 .type('Some text here')
                 .should('have.value', 'Some text here')
+        })
+
+        it.only('should find the correctly product', () => {
+            server.create('product', {
+                title: 'Relógio bonito',
+            })
+            server.createList('product', 10)
+
+            cy.visit('http://localhost:3000')
+
+            cy.get('input[type="search"]').type('Relógio bonito')
+            cy.get('[data-testid="search-form"]').submit()
+            cy.get('[data-testid="product-card"]').should('have.length', 1)
         })
     })
 })
