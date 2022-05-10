@@ -29,6 +29,18 @@ context('Store', () => {
                 'hidden'
             )
         })
+
+        it.only('should toggle shopping cart visibility when button is clicked', () => {
+            cy.visit('/')
+
+            cy.get('[data-testid="toggle-button"]').as('toggleButton')
+            cy.get('@toggleButton').click()
+
+            cy.get('[data-testid="shopping-cart"]').should(
+                'not.have.class',
+                'hidden'
+            )
+        })
     })
 
     context('Store > Product List', () => {
