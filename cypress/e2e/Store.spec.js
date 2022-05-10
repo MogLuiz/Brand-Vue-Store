@@ -37,6 +37,12 @@ context('Store', () => {
             cy.get('@toggleButton').click({ force: true })
             cy.getByTestId('shopping-cart').should('have.class', 'hidden')
         })
+
+        it('should open shopping cart when a product is added', () => {
+            cy.getByTestId('product-card').first().find('button').click()
+
+            cy.getByTestId('shopping-cart').should('not.have.class', 'hidden')
+        })
     })
 
     context('Store > Product List', () => {
