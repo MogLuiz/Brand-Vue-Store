@@ -20,6 +20,15 @@ context('Store', () => {
         cy.get('body').contains('Wrist Watch')
     })
 
+    context.only('Store > Product List', () => {
+        it('should display "0 Products" when no product is returned', () => {
+            cy.visit('http://localhost:3000')
+
+            cy.get('[data-testid="product-card"]').should('have.length', 0)
+            cy.get('body').contains('0 Products')
+        })
+    })
+
     context('Store > Search for Products', () => {
         it('should type in the search field', () => {
             cy.visit('http://localhost:3000')
