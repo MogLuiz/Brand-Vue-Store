@@ -44,10 +44,25 @@ context('Store', () => {
             cy.getByTestId('shopping-cart').should('not.have.class', 'hidden')
         })
 
-        it.only('should add first product to the cart', () => {
+        it('should add first product to the cart', () => {
             cy.getByTestId('product-card').first().find('button').click()
 
             cy.getByTestId('cart-item').should('have.length', 1)
+        })
+
+        it('should add 3 products to the cart', () => {
+            cy.getByTestId('product-card').eq(1).find('button').click()
+            cy.getByTestId('product-card')
+                .eq(6)
+                .find('button')
+                .click()
+                .click({ force: true })
+            cy.getByTestId('product-card')
+                .eq(9)
+                .find('button')
+                .click({ force: true })
+
+            cy.getByTestId('cart-item').should('have.length', 3)
         })
     })
 
