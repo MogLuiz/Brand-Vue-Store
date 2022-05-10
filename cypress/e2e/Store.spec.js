@@ -43,6 +43,12 @@ context('Store', () => {
 
             cy.getByTestId('shopping-cart').should('not.have.class', 'hidden')
         })
+
+        it.only('should add first product to the cart', () => {
+            cy.getByTestId('product-card').first().find('button').click()
+
+            cy.getByTestId('cart-item').should('have.length', 1)
+        })
     })
 
     context('Store > Product List', () => {
