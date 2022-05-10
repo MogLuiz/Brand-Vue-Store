@@ -20,16 +20,17 @@ context('Store', () => {
         cy.get('body').contains('Wrist Watch')
     })
 
-    context('Store > Shopping Cart', () => {
-        it('should not display shopping cart when page first loads', () => {
+    context.only('Store > Shopping Cart', () => {
+        beforeEach(() => {
+            server.createList('product', 10)
             cy.visit('/')
+        })
 
+        it('should not display shopping cart when page first loads', () => {
             cy.getByTestId('shopping-cart').should('have.class', 'hidden')
         })
 
         it('should toggle shopping cart visibility when button is clicked', () => {
-            cy.visit('/')
-
             cy.getByTestId('toggle-button').as('toggleButton')
             cy.get('@toggleButton').click()
             cy.getByTestId('shopping-cart').should('not.have.class', 'hidden')
