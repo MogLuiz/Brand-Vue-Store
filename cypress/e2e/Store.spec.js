@@ -50,7 +50,7 @@ context('Store', () => {
             cy.getByTestId('cart-item').should('have.length', 1)
         })
 
-        it('should add 3 products to the cart', () => {
+        it.only('should add 3 products to the cart', () => {
             cy.getByTestId('product-card').eq(1).find('button').click()
             cy.getByTestId('product-card')
                 .eq(6)
