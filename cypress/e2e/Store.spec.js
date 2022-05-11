@@ -20,7 +20,7 @@ context('Store', () => {
         cy.get('body').contains('Wrist Watch')
     })
 
-    context.only('Store > Shopping Cart', () => {
+    context('Store > Shopping Cart', () => {
         let quantity = 0
         beforeEach(() => {
             quantity = server.createList('product', 10).length
@@ -37,6 +37,16 @@ context('Store', () => {
             cy.getByTestId('shopping-cart').should('not.have.class', 'hidden')
             cy.get('@toggleButton').click({ force: true })
             cy.getByTestId('shopping-cart').should('have.class', 'hidden')
+        })
+
+        it.only('should not display "Clear cart" button when cart is empty', () => {
+            cy.getByTestId('toggle-button').as('toggleButton')
+            cy.get('@toggleButton').click()
+
+            cy.getByTestId('shopping-cart').should(
+                'not.include.text',
+                'Clear cart'
+            )
         })
 
         it('should display "Cart is empty" message when there are no products', () => {
@@ -90,7 +100,7 @@ context('Store', () => {
             cy.get('@cartItems').should('have.length', 0)
         })
 
-        it.only('should clear cart when "Clear cart" button is clicked', () => {
+        it('should clear cart when "Clear cart" button is clicked', () => {
             cy.addToCart({ indexes: [1, 2, 3] })
 
             cy.getByTestId('cart-item').should('have.length', 3)
