@@ -51,16 +51,7 @@ context('Store', () => {
         })
 
         it.only('should add 3 products to the cart', () => {
-            cy.getByTestId('product-card').eq(1).find('button').click()
-            cy.getByTestId('product-card')
-                .eq(6)
-                .find('button')
-                .click()
-                .click({ force: true })
-            cy.getByTestId('product-card')
-                .eq(9)
-                .find('button')
-                .click({ force: true })
+            cy.addToCart([1, 3, 5])
 
             cy.getByTestId('cart-item').should('have.length', 3)
         })
