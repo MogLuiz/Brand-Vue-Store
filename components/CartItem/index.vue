@@ -38,8 +38,8 @@
                         quantity
                     }}</span>
                     <button
-                        class="text-gray-500 focus:outline-none focus:text-gray-600"
                         data-testid="+"
+                        class="text-gray-500 focus:outline-none focus:text-gray-600"
                         @click="quantity++"
                     >
                         <svg
