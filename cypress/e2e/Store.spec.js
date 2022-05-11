@@ -39,7 +39,7 @@ context('Store', () => {
             cy.getByTestId('shopping-cart').should('have.class', 'hidden')
         })
 
-        it.only('should display "Cart is empty" message when there are no products', () => {
+        it('should display "Cart is empty" message when there are no products', () => {
             cy.getByTestId('toggle-button').as('toggleButton')
             cy.get('@toggleButton').click()
             cy.getByTestId('shopping-cart').contains('Cart is empty')
@@ -88,6 +88,14 @@ context('Store', () => {
                 .click()
 
             cy.get('@cartItems').should('have.length', 0)
+        })
+
+        it.only('should clear cart when "Clear cart" button is clicked', () => {
+            cy.addToCart({ indexes: [1, 2, 3] })
+
+            cy.getByTestId('cart-item').should('have.length', 3)
+            cy.getByTestId('clear-cart-button').click()
+            cy.getByTestId('cart-item').should('have.length', 0)
         })
     })
 
