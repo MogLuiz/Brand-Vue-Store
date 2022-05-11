@@ -21,8 +21,9 @@ context('Store', () => {
     })
 
     context.only('Store > Shopping Cart', () => {
+        let quantity = 0
         beforeEach(() => {
-            server.createList('product', 10)
+            quantity = server.createList('product', 10).length
             cy.visit('/')
         })
 
@@ -56,10 +57,16 @@ context('Store', () => {
             cy.getByTestId('cart-item').should('have.length', 3)
         })
 
-        it.only('should add 1 product to the cart', () => {
+        it('should add 1 product to the cart', () => {
             cy.addToCart(9)
 
             cy.getByTestId('cart-item').should('have.length', 1)
+        })
+
+        it('should add all products to the cart', () => {
+            cy.addToCart('all')
+
+            cy.getByTestId('cart-item').should('have.length', quantity)
         })
     })
 
