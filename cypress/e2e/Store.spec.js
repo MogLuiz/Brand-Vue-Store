@@ -39,6 +39,12 @@ context('Store', () => {
             cy.getByTestId('shopping-cart').should('have.class', 'hidden')
         })
 
+        it.only('should display "Cart is empty" message when there are no products', () => {
+            cy.getByTestId('toggle-button').as('toggleButton')
+            cy.get('@toggleButton').click()
+            cy.getByTestId('shopping-cart').contains('Cart is empty')
+        })
+
         it('should open shopping cart when a product is added', () => {
             cy.getByTestId('product-card').first().find('button').click()
 
@@ -69,7 +75,7 @@ context('Store', () => {
             cy.getByTestId('cart-item').should('have.length', quantity)
         })
 
-        it.only('should remove a product from cart', () => {
+        it('should remove a product from cart', () => {
             cy.addToCart({ index: 2 })
 
             cy.getByTestId('cart-item').as('cartItems')
