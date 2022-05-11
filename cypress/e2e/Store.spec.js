@@ -95,13 +95,24 @@ context('Store', () => {
             cy.getByTestId('quantity').contains(1)
         })
 
-        it.only('should increase quantity when button + gets clicked', () => {
+        it('should increase quantity when button + gets clicked', () => {
             cy.addToCart({ index: 6 })
             cy.getByTestId('+').click()
             cy.getByTestId('quantity').contains(2)
             cy.getByTestId('+').click()
             cy.getByTestId('+').click()
             cy.getByTestId('quantity').contains(4)
+        })
+
+        it.only('should decrease quantity when button - gets clicked', () => {
+            cy.addToCart({ index: 1 })
+            cy.getByTestId('+').click()
+            cy.getByTestId('+').click()
+            cy.getByTestId('quantity').contains(3)
+            cy.getByTestId('-').click()
+            cy.getByTestId('quantity').contains(2)
+            cy.getByTestId('-').click()
+            cy.getByTestId('quantity').contains(1)
         })
 
         it('should remove a product from cart', () => {
