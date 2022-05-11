@@ -85,10 +85,6 @@ context('Store', () => {
             cy.getByTestId('cart-item').should('have.length', quantity)
         })
 
-        // quantity
-        // +
-        // -
-
         it('should display quantity 1 when product is added to cart', () => {
             cy.addToCart({ index: 1 })
 
@@ -115,7 +111,7 @@ context('Store', () => {
             cy.getByTestId('quantity').contains(1)
         })
 
-        it.only('should not decrease below zero when button - gets clicked', () => {
+        it('should not decrease below zero when button - gets clicked', () => {
             cy.addToCart({ index: 1 })
             cy.getByTestId('+').click()
             cy.getByTestId('quantity').contains(2)
